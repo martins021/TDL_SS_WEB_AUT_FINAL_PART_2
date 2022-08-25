@@ -1,0 +1,23 @@
+{
+  "name": "tdl_ss_web_aut_final_part_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martins021/TDL_SS_WEB_AUT_FINAL_PART_2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martins021/TDL_SS_WEB_AUT_FINAL_PART_2/issues"
+  },
+  "homepage": "https://github.com/martins021/TDL_SS_WEB_AUT_FINAL_PART_2#readme",
+  "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.2.1",
+    "cypress": "10.3"
+  }
+}
