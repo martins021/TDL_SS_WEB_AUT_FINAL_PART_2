@@ -1,15 +1,6 @@
 import HomePage from "../pageObjects/HomePage";
 import SortablePage from "../pageObjects/SortablePage";
 
-const numberValues = {
-  One:"0",
-  Two:"1",
-  Three:"2",
-  Four:"3",
-  Five:"4",
-  Six:"5",
-};
-
 describe("Practice forms", () => {
   it("Practice form", () => {
     HomePage.visit()
@@ -72,25 +63,30 @@ describe("Practice forms", () => {
     }
   })
 
-  function sorted(param){
-    let numbers = ["0", "1", "2", "3", "4", "5"]
+  function sorted(param, numbers){
+    let nums = []
+    param.each(($el) => {
+      nums.push($el.text())
+    })
     let count = 0
     let sorted = true;
-    param.each(($el) => {
-      if(numberValues[$el.text()] == numbers[count]){
-        sorted = true;
-      } else {
-        sorted = false;
-        return sorted
-      }
-      count += 1
-    })
+      nums.forEach((item) => {
+        if(item == numbers[count]){
+          sorted = true;
+        } else {
+          sorted = false;
+          return sorted
+        }
+        count += 1
+      })
     return sorted
   }
 
-  it.only("Interactions - Sortable", () => {
+  it("Interactions - Sortable", () => {
     SortablePage.visit()
-    if(sorted(SortablePage.numbers)){
+
+    let numbers = ["One", "Two", "Three", "Four", "Five", "Six"]
+    if(sorted(SortablePage.numbers, numbers)){
       cy.log("Numbers are in order")
     } else {
       cy.log("Numbers are not in order")
@@ -117,7 +113,8 @@ describe("Practice forms", () => {
       .trigger('mousemove', { which: 1, pageX: 600, pageY: 30, force:true })
       .trigger('mouseup', {force:true})
 
-      if(sorted(SortablePage.numbers)){
+      numbers.reverse()
+      if(sorted(SortablePage.numbers), numbers){
         cy.log("Numbers are in order")
       } else {
         cy.log("Numbers are not in order")
